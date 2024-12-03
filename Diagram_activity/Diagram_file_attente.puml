@@ -1,0 +1,15 @@
+@startuml name
+start
+:Vérifier l'état des attractions;
+if (Attraction disponible ?) then (Oui)
+  :Mettre à jour la file d'attente;
+  if (File d'attente pleine ?) then (Oui)
+    :Avertir les visiteurs;
+  else (Non)
+    :Ajouter les nouveaux visiteurs à la file;
+  endif
+else (Non)
+  :Notifier les visiteurs de l'indisponibilité;
+endif
+stop
+@enduml

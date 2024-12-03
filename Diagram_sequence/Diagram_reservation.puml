@@ -1,0 +1,22 @@
+@startuml name
+title Processus de réservation d un créneau pour une attraction
+
+actor Visiteur
+participant "Système de Gestion" as System
+participant "Base de Données" as Database
+participant "Attraction"
+
+Visiteur -> System: Consulter liste des attractions
+System -> Database: Récupérer la liste des attractions
+Database --> System: Liste des attractions
+System --> Visiteur: Afficher la liste
+
+Visiteur -> System: Sélectionner une attraction et un créneau
+System -> Database: Vérifier la disponibilité du créneau
+Database --> System: Créneau disponible
+
+Visiteur -> System: Confirmer la réservation
+System -> Database: Enregistrer la réservation
+Database --> System: Confirmation de réservation
+System --> Visiteur: Envoyer confirmation
+@enduml

@@ -1,0 +1,18 @@
+@startuml name
+[*] --> Fermée : Initialisation ou Problème technique
+
+Fermée --> Ouverte : Problème résolu ou Maintenance terminée
+Fermée --> EnMaintenance : Signalement d'un problème
+
+Ouverte --> AvecFileDAttente : Visiteurs en attente
+AvecFileDAttente --> Ouverte : File vide
+Ouverte --> Fermée : Fin de la journée ou Problème technique
+
+EnMaintenance --> Fermée : Maintenance terminée
+EnMaintenance --> Ouverte : Réparation effectuée et test OK
+
+state Fermée
+state Ouverte
+state AvecFileDAttente
+state EnMaintenance
+@enduml

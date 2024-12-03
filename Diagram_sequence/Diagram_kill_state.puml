@@ -1,0 +1,24 @@
+@startuml name
+title Gestion d une attraction en panne
+
+actor Employe as Operateur
+participant "Système de Gestion" as System
+participant "Base de Données" as Database
+participant "Attraction"
+
+Operateur -> System: Signaler une panne
+System -> Database: Mettre à jour l’état de l’attraction (Maintenance)
+Database --> System: État mis à jour
+System --> Operateur: Confirmer signalement
+
+actor Employe as Maintenance
+Maintenance -> System: Consulter les attractions en maintenance
+System -> Database: Récupérer les attractions en maintenance
+Database --> System: Liste des attractions en maintenance
+System --> Maintenance: Afficher la liste
+
+Maintenance -> System: Remettre en service une attraction
+System -> Database: Mettre à jour l’état de l’attraction (Ouverte)
+Database --> System: État mis à jour
+System --> Maintenance: Confirmer remise en service
+@enduml

@@ -1,0 +1,19 @@
+@startuml name
+start
+:Choisir le type de billet (journée, attraction unique);
+if (Billet journée ?) then (Oui)
+  :Calculer le prix total;
+  :Générer un QR code;
+else (Non)
+  :Vérifier la disponibilité de l'attraction;
+  if (Disponible ?) then (Oui)
+    :Réserver le créneau horaire;
+    :Calculer le prix;
+    :Générer un QR code;
+  else (Non)
+    :Informer le visiteur de l'indisponibilité;
+  endif
+endif
+:Envoyer le billet par email;
+stop
+@enduml

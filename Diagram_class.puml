@@ -1,0 +1,59 @@
+@startuml name
+class Visiteur {
+    - id: int
+    - nom: String
+    - email: String
+    - historiqueReservations: List<Reservation>
+    + acheterBillet(): Billet
+    + reserverAttraction(attraction: Attraction, date: Date): Reservation
+    + consulterListeAttractions(): List<Attraction>
+}
+
+class Employe {
+    - id: int
+    - nom: String
+    - role: String
+    + suivreFilesAttente(): void
+    + ajusterCreneaux(): void
+}
+
+class Attraction {
+    - id: int
+    - nom: String
+    - type: String
+    - etat: String
+    + consulterEtat(): String
+    + signalerMaintenance(): void
+    + remettreEnService(): void
+}
+
+class Billet {
+    - id: int
+    - type: String
+    - prix: double
+    + genererQR(): String
+}
+
+class Reservation {
+    - id: int
+    - date: Date
+    - statut: String
+    + annuler(): void
+    + confirmer(): void
+}
+
+class Maintenance extends Employe {
+    + gererMaintenance(attraction: Attraction): void
+}
+
+class Operateur extends Employe {
+    + superviserAttraction(attraction: Attraction): void
+}
+
+Visiteur "1" -- "n" Reservation : "historique"
+Reservation "n" -- "1" Attraction : "cible"
+Reservation "1" -- "1" Billet : "associe"
+Employe <|-- Maintenance
+Employe <|-- Operateur
+Attraction "n" -- "1" Employe : "superviseur"
+@enduml

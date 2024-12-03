@@ -1,0 +1,12 @@
+@startuml name
+start
+:Scanner le billet d'entrée;
+if (Billet valide ?) then (Oui)
+  :Autoriser l'entrée;
+  :Afficher les attractions disponibles;
+else (Non)
+  :Refuser l'entrée;
+  :Demander au visiteur de contacter le service client;
+endif
+stop
+@enduml

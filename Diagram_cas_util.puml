@@ -1,0 +1,39 @@
+@startuml name
+left to right direction
+
+actor "Visiteur" as Visiteur
+actor "Opérateur d'attraction" as Operateur
+actor "Personnel de maintenance" as Maintenance
+
+rectangle Système {
+    usecase "Acheter un billet" as AcheterBillet
+    usecase "Réserver une attraction" as ReserverAttraction
+    usecase "Consulter la liste des attractions/restaurants/boutiques" as ConsulterListe
+    usecase "Accéder aux temps d'attente" as TempsAttente
+    usecase "Recevoir des notifications" as Notifications
+
+    usecase "Suivre les files d'attente" as SuivreFiles
+    usecase "Ajuster les créneaux horaires" as AjusterCreneaux
+
+    usecase "Signaler une attraction en maintenance" as SignalerMaintenance
+    usecase "Mettre en maintenance une attraction" as MettreMaintenance
+    usecase "Remettre en service une attraction" as RemettreService
+    usecase "Superviser les entrées et sorties" as SuperviserEntrees
+    usecase "Gérer les incidents" as GererIncidents
+}
+
+Visiteur --> AcheterBillet
+Visiteur --> ReserverAttraction
+Visiteur --> ConsulterListe
+Visiteur --> TempsAttente
+Visiteur --> Notifications
+
+Operateur --> SuivreFiles
+Operateur --> AjusterCreneaux
+
+Maintenance --> SignalerMaintenance
+Maintenance --> MettreMaintenance
+Maintenance --> RemettreService
+Maintenance --> SuperviserEntrees
+Maintenance --> GererIncidents
+@enduml
